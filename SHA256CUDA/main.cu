@@ -184,11 +184,11 @@ int main() {
 
 	std::string hash_of_preceding_coin;
 	std::cout << "Enter a hash_of_preceding_coin : ";
-	getline(std::cin, hash_of_preceding_coin);
+	std::cin >> hash_of_preceding_coin;
 
 	std::string id_of_miner;
 	std::cout << "Enter a id_of_miner : ";
-	getline(std::cin, id_of_miner);
+	std::cin >> id_of_miner;
 
 	std::string in = std::string("CPEN 442 Coin2021") + hash_of_preceding_coin;
 
