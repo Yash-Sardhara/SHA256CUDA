@@ -190,7 +190,7 @@ int main() {
 	std::cout << "Enter a id_of_miner : ";
 	getline(std::cin, id_of_miner);
 
-	std::string in = "CPEN 442 Coin" + "2021" + hash_of_preceding_coin;
+	std::string in = std::string("CPEN 442 Coin2021") + hash_of_preceding_coin;
 
 	std::cout << "Nonce : ";
 	std::cin >> user_nonce;
