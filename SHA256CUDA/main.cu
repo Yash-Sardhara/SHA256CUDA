@@ -120,7 +120,7 @@ __global__ void sha256_kernel(char* out_input_string_nonce, unsigned char* out_f
 		sha256_init(&ctx);
 		sha256_update(&ctx, (unsigned char *)in, in_input_string_size);
 		sha256_update(&ctx, out, size);
-		sha256_update(&ctx, (unsigned char *)minid_in, minid_in_input_string);
+		sha256_update(&ctx, (unsigned char *)minid_in, minid_in_input_string_size);
 		sha256_final(&ctx, tmp);
 
 		// Second round of SHA256
@@ -190,7 +190,7 @@ int main() {
 	std::cout << "Enter a id_of_miner : ";
 	getline(std::cin, id_of_miner);
 
-	std::string in = "CPEN 442 Coin" + "2021" + hash_of_preceding_coin // + coin_blob + id_of_miner 
+	std::string in = "CPEN 442 Coin" + "2021" + hash_of_preceding_coin;
 
 	std::cout << "Nonce : ";
 	std::cin >> user_nonce;
@@ -201,7 +201,7 @@ int main() {
 
 
 	const size_t input_size = in.size();
-	const size_t id_of_miner_size = id_of_miner.size()
+	const size_t id_of_miner_size = id_of_miner.size();
 
 	// Input string for the device
 	char *d_in = nullptr;
