@@ -114,19 +114,19 @@ __global__ void sha256_kernel(char* out_input_string_nonce, unsigned char* out_f
 	assert(size <= 32);
 
 	{
-		unsigned char tmp[32];
+		// unsigned char tmp[32];
 
 		SHA256_CTX ctx;
 		sha256_init(&ctx);
 		sha256_update(&ctx, (unsigned char *)in, in_input_string_size);
 		sha256_update(&ctx, out, size);
 		sha256_update(&ctx, (unsigned char *)minid_in, minid_in_input_string_size);
-		sha256_final(&ctx, tmp);
+		sha256_final(&ctx, sha);
 
 		// Second round of SHA256
-		sha256_init(&ctx);
-		sha256_update(&ctx, tmp, 32);
-		sha256_final(&ctx, sha);
+		// sha256_init(&ctx);
+		// sha256_update(&ctx, tmp, 32);
+		// sha256_final(&ctx, sha);
 	}
 
 	if (checkZeroPadding(sha, difficulty) && atomicExch(out_found, 1) == 0) {
